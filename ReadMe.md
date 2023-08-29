@@ -9,12 +9,11 @@
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![SQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Brief
-**Tech Test** allows a single user to enter a name and email address, and then choose a templated message from a drop down menu. The message is then 'sent', or in this case, saved as persistent data to a PostgresQL relational db.
+**Tech Test** allows a single user to enter a name and email address, and then choose a templated message from a drop down menu. The message is then 'sent', or in this case, the recipient's name, email and message is saved as persistent data to a PostgresQL relational db.
 
 
 ## Getting Started
@@ -23,9 +22,12 @@ The first step is to fork a copy of the Piggy repository to your own account. Fo
 
 After completing that step, in the command line:
 
-1. Clone your new repo by typing `git clone git@github.com:ColetteDufficy/cdufficy_yakara.git`
+1. Clone your new repo by typing 
+```
+git clone git@github.com:ColetteDufficy/cdufficy_yakara.git
+```
 
-2. You'll need to create and seed your database:
+2. You'll need to create and seed your database locally:
 ```
 # Terminal
 createdb messaging
@@ -49,9 +51,6 @@ Runs the app in the development mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in your browser.
 (Press CTRL+C to quit)
 
-
-
-https://github.com/ColetteDufficy/piggy_spend_tracker/assets/90625181/b444e578-3e26-4075-9470-097af893e822
 
 ## Author
 
