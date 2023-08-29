@@ -15,5 +15,5 @@ CREATE TABLE msg_sent (
     msg_template_id INT REFERENCES msg_templates(id) ON DELETE CASCADE
 );
 
-INSERT INTO msg_templates (msg_title, msg_content) VALUES ('hello', 'Hello, \nThank you for your call today. \nPlease contact us if you have any further questions. \Yakara' );
+INSERT INTO msg_templates (msg_title, msg_content) VALUES ('Hello Message', 'Hello, \nThank you for your call today. \nPlease contact us if you have any further questions. \Yakara' );
 

@@ -2,7 +2,7 @@
 
 <!-- # Yakara -->
 
-<img src="code_test/Screenshot.png" alt="Homepage" width="300" >
+<img src="code_test/Screenshot.png" alt="Homepage" width="500" >
 
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
