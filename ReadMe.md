@@ -1,10 +1,9 @@
 <a name="readme-top"></a>
 
-# Yakara
-
-![Homepage](screengrabs/yakara_logo.png)
+<!-- # Yakara -->
 ![Homepage](screengrabs/yakara_type_logo.png)
 
+![Homepage](code_test/example_page.png)
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
@@ -16,7 +15,6 @@
 
 ## Brief
 **Tech Test** allows a single user to enter a name and email address, and then choose a templated message from a drop down menu. The message is then 'sent', or in this case, saved as persistent data to a PostgresQL relational db.
-![Homepage](code_test/example page.png)
 
 
 ## Getting Started
