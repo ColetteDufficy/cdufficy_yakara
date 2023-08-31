@@ -1,27 +1,36 @@
 <div class="new_container">
 
     <form class="form" action="/" method="post">
-
         <label for="fname">Name</label>
-        <input type="text" 
-        id="fname" 
-        name="fname">
-
+        <input type="text" id="name" name="name">
+    
         <label for="email">Email</label>
         <input type="email" id="email" name="email">
-
+    
         <label for="msg_template_id">Template</label>
-        <select name="msg_template_id" id="msg_template_id">
-            {% for msg in msgs %}
-                <option value="{{ msg_template.id }}">{{ msg_template.msg_title }}</option>
+        <select name="msg_template_id" id="msg_template_id" onchange="this.form.submit()">
+            <option value="" {% if selected_template_id is none %}selected{% endif %}>Choose a template</option>
+            {% for msg_template in msg_templates %}
+                <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
             {% endfor %}
         </select>
-
+        
+        
         <label for="preview">Message Preview</label>
-        <textarea name="preview" id="preview" cols="80" rows="6"></textarea>
-        <input class="btn btn--action" type='submit' value="Send">
+        <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
+        
+        <input class="btn btn--action" type="submit" value="Select">
+    </form>
+    
+    <!-- <form class="form" action="/send" method="post">
+        <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
+        <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}">
+        <input class="btn btn--action" type="submit" value="Send">
+    </form>
+     -->
+    </div>
 
-    </form> 
 
 
-</div>
+
+

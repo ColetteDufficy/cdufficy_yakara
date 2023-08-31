@@ -18,7 +18,7 @@
 
 ## Getting Started
 
-The first step is to fork a copy of the Piggy repository to your own account. Follow the [official instructions](https://docs.github.com/en/get-started/quickstart/fork-a-repo) from GitHub.
+The first step is to fork a copy of the repository to your own account. Follow the [official instructions](https://docs.github.com/en/get-started/quickstart/fork-a-repo) from GitHub.
 
 After completing that step, in the command line:
 

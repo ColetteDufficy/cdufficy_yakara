@@ -20,27 +20,53 @@ messages_blueprint = Blueprint("messages", __name__)
 # 6. UPDATE
 # 7. DELETE
 
-# NEW
-# GET '/'
-# getting all the msg templtes from 'behind the scenes'
-@messages_blueprint.route("/", methods=['GET'])
+# # NEW
+# # GET '/'
+# # getting all the msg templtes from 'behind the scenes'
+# @messages_blueprint.route("/", methods=['GET'])
+# def get_all_msg_templates():
+#     msg_templates = msg_template_repository.select_all()
+#     return render_template("index.html", msg_templates = msg_templates)
+
+
+# # CREATE
+# # POST '/message'
+# # 'post' the data from the form back to the db so it will persist
+# @messages_blueprint.route("/",  methods=['POST'])
+# def create_message():
+
+#     user_id = request.form['user_id']
+#     location_id = request.form['location_id']
+#     review = request.form['review']
+#     user = user_repository.select(user_id)
+#     location = location_repository.select(location_id)
+#     visit = Visit(user, location, review)
+#     visit_repository.save(visit)
+
+#     return redirect('/')
+
+
+@messages_blueprint.route("/", methods=['GET', 'POST'])
 def get_all_msg_templates():
+    selected_template_msg_content = ""
+    selected_template_id = None
+
+    if request.method == 'POST':
+                # print("Form Data:", request.form)
+        selected_template_id = int(request.form['msg_template_id'])
+
+        if selected_template_id:
+            if selected_template_id != "":  # Check it's not an empty string
+                selected_template = msg_template_repository.select(int(selected_template_id))
+                if selected_template:
+                    selected_template_msg_content = selected_template.msg_content
+        
+        # Clear message content if "Choose a template" is selected
+        if selected_template_id == "":
+            selected_template_msg_content = ""
+
+        # print("selected_template_id:", selected_template_id)
+        # print("selected_template_msg_content:", selected_template_msg_content)
     msg_templates = msg_template_repository.select_all()
-    return render_template("index.html", msg_templates = msg_templates)
 
-
-# CREATE
-# POST '/message'
-# 'post' the data from the form back to the db so it will persist
-@messages_blueprint.route("/",  methods=['POST'])
-def create_message():
-
-    user_id = request.form['user_id']
-    location_id = request.form['location_id']
-    review = request.form['review']
-    user = user_repository.select(user_id)
-    location = location_repository.select(location_id)
-    visit = Visit(user, location, review)
-    visit_repository.save(visit)
-
-    return redirect('/')
+    return render_template("index.html", msg_templates=msg_templates, selected_template_msg_content=selected_template_msg_content, selected_template_id=selected_template_id)
