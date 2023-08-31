@@ -52,18 +52,13 @@ def get_all_msg_templates():
     selected_template_id = None
 
     if request.method == 'POST':
-                # print("Form Data:", request.form)
+        # print("Form Data:", request.form)
         selected_template_id = int(request.form['msg_template_id'])
 
         if selected_template_id:
-            if selected_template_id != "":  # Check it's not an empty string
-                selected_template = msg_template_repository.select(int(selected_template_id))
-                if selected_template:
-                    selected_template_msg_content = selected_template.msg_content
-        
-        # Clear message content if "Choose a template" is selected
-        if selected_template_id == "":
-            selected_template_msg_content = ""
+            selected_template = msg_template_repository.select(int(selected_template_id))
+            if selected_template:
+                selected_template_msg_content = selected_template.msg_content
 
         # print("selected_template_id:", selected_template_id)
         # print("selected_template_msg_content:", selected_template_msg_content)

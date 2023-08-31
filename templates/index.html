@@ -9,9 +9,12 @@
     
         <label for="msg_template_id">Template</label>
         <select name="msg_template_id" id="msg_template_id" onchange="this.form.submit()">
-            <option value="" {% if selected_template_id is none %}selected{% endif %}>Choose a template</option>
             {% for msg_template in msg_templates %}
-                <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
+                {% if msg_template.msg_title == 'Choose a template' %}
+                    <option value="{{ msg_template.id }}" selected>{{ msg_template.msg_title }}</option>
+                {% else %}
+                    <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
+                {% endif %}
             {% endfor %}
         </select>
         
@@ -19,7 +22,7 @@
         <label for="preview">Message Preview</label>
         <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
         
-        <input class="btn btn--action" type="submit" value="Select">
+        <input class="btn btn--action" type="submit" value="Send">
     </form>
     
     <!-- <form class="form" action="/send" method="post">
