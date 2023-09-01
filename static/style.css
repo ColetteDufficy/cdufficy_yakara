@@ -1,42 +1,76 @@
 /* fonts imported */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&family=Roboto:wght@300&display=swap');
 
 
+
+/* this is the entire workspace */
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: black;
-    border: red solid 2px;
-    background-color: rgb(126, 128, 127);
-    padding: 100;
-    margin: 200;
+    background-color: rgb(141, 143, 142);
+    padding-left: 5em;
+    padding-top: 2em;
+    /* border: red solid 2px; */
 } 
 
-.input_fields{
-    margin-bottom: 30px;
-    display: block;
-    border: rgb(244, 193, 7) solid 3px;
-    display: block; /* Make labels take up the full width and stack above inputs */
+.all {
+    text-align: left;
 }
 
-.input_fields >label{
-    border: purple solid 4px;
-
+.form {
+    display: inline-block;
+    text-align: left;
+    /* border: blue solid 2px; show me the fir only */
 }
 
-.button{
-    margin-bottom: 30px;
-    background: blue;
-    border: green solid 3px;
+ /* these are text labels only x 3 */
+label {
+    display: block; /* Display labels as block elements (one below the other) */
+    font-weight: bold; /* Make labels bold if desired */
+    /* border: rgb(0, 255, 55) solid 2px; show me the edge of label titles */
 }
 
 
-.form >label{
-    border: purple solid 4px;
+ /* these are labels and input fields x 3 */
+.input_fields {
+    margin-bottom: 10px; /* Add spacing between input fields */
+    /* border: rgb(255, 0, 230) solid 2px; show me the edge of 3 input elements */
 }
 
-.label {
-    display: block; /* Make labels take up the full width and stack above inputs */
-    margin-bottom: 5px; /* Add spacing below labels */
-    border: yellow solid 3px;
+ /* these are input fields x 3 only */
+input[type="text"],
+input[type="email"],
+select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    width: 40%; /* Make all input fields and select boxes full width */
+    padding: 5px; /* Add some padding for better appearance */
+    margin-bottom: 10px; /* Add spacing between input fields */
+    /* border: rgb(242, 255, 0) solid 2px; show me the edge of 3 input elements */
 }
+
+/* this s the preview window only */
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    width: 70%; 
+    padding: 5px; 
+    margin-bottom: 10px; 
+    /* border: rgb(0, 229, 255) solid 2px; show me the edge of 3 input elements */
+}
+
+/* avoiding default button styling */
+.btn.btn--action {
+    background-color: rgb(97, 158, 219); 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* doent seem to be working??*/
+    font-size: 16px; 
+    padding: 0px 20px 0px 20px; /* padding for spacing */
+    border: rgb(51, 86, 121) 1px solid; /* replace default button border */
+    cursor: pointer; /* cursor on hover for fun! */
+}
+
+
+
+
