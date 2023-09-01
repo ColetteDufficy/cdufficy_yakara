@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+import re
 
 from models.msg_template import Msg_template
 from models.msg_sent import Msg_sent
@@ -56,8 +57,13 @@ def create_msg_sent_to_db():
 
     # Perform validation
     if not recipient_name or not recipient_email or not msg_template_id:
-        # Validation failed, return an error or redirect back to the form
+        # Validation failed, redirect back to the error page
         return render_template("error.html")
+    
+    # Check for a valid email format using regular expression
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", recipient_email):
+        return render_template("error.html", error="Invalid email format")
+
 
 
     msg_template = msg_template_repository.select(msg_template_id)
@@ -68,7 +74,7 @@ def create_msg_sent_to_db():
     # print("msg_sent submiussion:", msg_sent)
 
 
-    return render_template('sent.html')
+    return render_template("sent.html")
 
 
 
