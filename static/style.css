@@ -93,6 +93,17 @@ textarea {
 }
 
 
+.error_alert {
+    background-color: rgb(117, 8, 19); 
+    padding: 20px; 
+    text-align: center; /* Center-align the content */
+    color: rgb(255, 255, 255); 
+    border-radius: 5px;
+    margin-left: 5em;
+    margin-right: 5em;
+    /* border: red solid 2px; */
+}
+
 
 
 

@@ -54,6 +54,12 @@ def create_msg_sent_to_db():
     recipient_email = request.form['email']
     msg_template_id = request.form['msg_template_id']
 
+    # Perform validation
+    if not recipient_name or not recipient_email or not msg_template_id:
+        # Validation failed, return an error or redirect back to the form
+        return render_template("error.html")
+
+
     msg_template = msg_template_repository.select(msg_template_id)
 
     msg_sent = Msg_sent(recipient_name, recipient_email, msg_template)
