@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 
 from models.msg_template import Msg_template
+from models.msg_sent import Msg_sent
 
 import repositories.sent_msg_repository as sent_msg_repository
 import repositories.msg_template_repository as msg_template_repository
@@ -22,7 +23,7 @@ messages_blueprint = Blueprint("messages", __name__)
 
 # NEW
 # GET '/' requesting all the msg_title so they appear in drop down as options
-# POST '/' -onchnage event prompts post response to fill preview screen with user-choosen msg_content
+# POST '/' onchange event prompts POST response to fill preview screen with user-choosen msg_content
 @messages_blueprint.route("/", methods=['GET', 'POST'])
 def get_all_msg_templates():
     selected_template_msg_content = ""
@@ -45,20 +46,22 @@ def get_all_msg_templates():
     return render_template("index.html", msg_templates=msg_templates, selected_template_msg_content=selected_template_msg_content, selected_template_id=selected_template_id)
 
 
-# # CREATE
-# # POST '/message'
-# # 'post' the data from the form back to the db so it will persist
-# @messages_blueprint.route("/",  methods=['POST'])
-# def create_message():
+# CREATE
+# POST 'msg_sent' back to db as persistent data
+@messages_blueprint.route("/",  methods=['POST'])
+def create_msg_sent_to_db():
 
-#     user_id = request.form['user_id']
-#     location_id = request.form['location_id']
-#     review = request.form['review']
-#     user = user_repository.select(user_id)
-#     location = location_repository.select(location_id)
-#     visit = Visit(user, location, review)
-#     visit_repository.save(visit)
+    recipient_name = request.form['name']
+    recipient_email = request.form['email']
+    msg_template_id = request.form['msg_template_id']
+    
+    msg_template = msg_template_repository.select(msg_template_id)
 
-#     return redirect('/')
+    msg_sent = Msg_sent(recipient_name, recipient_email, msg_template)
+    sent_msg_repository.save(msg_sent)
+
+    return redirect('/')
+
+
 
 

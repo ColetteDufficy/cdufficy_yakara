@@ -18,7 +18,7 @@
 
             <!-- for styling capture in a div -->
             <div class="input_fields">
-                <label for="fname">Name</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" name="name">
             </div>
 
@@ -45,20 +45,22 @@
             
             <label for="preview">Message Preview</label>
             <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
-            
-            <!-- for styling capture in a div -->
-            <div class="button">
-                <input class="btn btn--action" type="submit" value="Send">
-            </div>
+        
 
         </form>
         
-        <!-- <form class="form" action="/send" method="post">
+
+
+                    <!-- for styling capture in a div -->
+
+        <div class="button">
+        <form class="form" action="/" method="post">
             <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
             <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}">
             <input class="btn btn--action" type="submit" value="Send">
         </form>
-         -->
+    </div>
+        
 
         </div>
 </body>

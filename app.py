@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from controllers.sent_msg_controller import messages_blueprint
+from controllers.msg_template_controller import messages_blueprint
 
 app = Flask(__name__)
 
