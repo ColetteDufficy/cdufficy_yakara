@@ -3,8 +3,8 @@ from db.run_sql import run_sql
 from models.msg_sent import Msg_sent #importing the class of Msg_sent to be used in CRUD
 
 
-
 #SAVE
+# saving the recipient_name, recipient_email and msg_template_id back to the msg_sents table in the db 
 def save(msg_sent):
     sql = """
         INSERT INTO msg_sent (recipient_name, recipient_email, msg_template_id) 

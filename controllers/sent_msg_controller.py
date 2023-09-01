@@ -11,7 +11,7 @@ messages_blueprint = Blueprint("messages", __name__)
 #blueprint is a place to store lots of routes. ie @app.routes
 
 
-# RESTful CRUD Routes - 7 of them:
+# RESTful CRUD Routes:
 # 1. INDEX
 # 2. NEW
 # 3. CREATE
@@ -20,13 +20,29 @@ messages_blueprint = Blueprint("messages", __name__)
 # 6. UPDATE
 # 7. DELETE
 
-# # NEW
-# # GET '/'
-# # getting all the msg templtes from 'behind the scenes'
-# @messages_blueprint.route("/", methods=['GET'])
-# def get_all_msg_templates():
-#     msg_templates = msg_template_repository.select_all()
-#     return render_template("index.html", msg_templates = msg_templates)
+# NEW
+# GET '/' requesting all the msg_title so they appear in drop down as options
+# POST '/' -onchnage event prompts post response to fill preview screen with user-choosen msg_content
+@messages_blueprint.route("/", methods=['GET', 'POST'])
+def get_all_msg_templates():
+    selected_template_msg_content = ""
+    selected_template_id = None
+
+    msg_templates = msg_template_repository.select_all()
+
+    if request.method == 'POST':
+        # print("Form Data:", request.form)
+        selected_template_id = int(request.form['msg_template_id'])
+
+        if selected_template_id:
+            selected_template = msg_template_repository.select(int(selected_template_id))
+            if selected_template:
+                selected_template_msg_content = selected_template.msg_content
+
+        # print("selected_template_id:", selected_template_id)
+        # print("selected_template_msg_content:", selected_template_msg_content)
+
+    return render_template("index.html", msg_templates=msg_templates, selected_template_msg_content=selected_template_msg_content, selected_template_id=selected_template_id)
 
 
 # # CREATE
@@ -46,22 +62,3 @@ messages_blueprint = Blueprint("messages", __name__)
 #     return redirect('/')
 
 
-@messages_blueprint.route("/", methods=['GET', 'POST'])
-def get_all_msg_templates():
-    selected_template_msg_content = ""
-    selected_template_id = None
-
-    if request.method == 'POST':
-        # print("Form Data:", request.form)
-        selected_template_id = int(request.form['msg_template_id'])
-
-        if selected_template_id:
-            selected_template = msg_template_repository.select(int(selected_template_id))
-            if selected_template:
-                selected_template_msg_content = selected_template.msg_content
-
-        # print("selected_template_id:", selected_template_id)
-        # print("selected_template_msg_content:", selected_template_msg_content)
-    msg_templates = msg_template_repository.select_all()
-
-    return render_template("index.html", msg_templates=msg_templates, selected_template_msg_content=selected_template_msg_content, selected_template_id=selected_template_id)
