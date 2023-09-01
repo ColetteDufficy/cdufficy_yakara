@@ -1,3 +1,5 @@
+<!-- correct at 2.05pm -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,6 @@
   <title>Yakara</title>
 </head>
 
-
-
 <body>
     <!-- for styling, capturing everything in a div  -->
     <div class="all">
@@ -19,13 +19,13 @@
             <!-- for styling capture in a div -->
             <div class="input_fields">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}">
             </div>
 
             <!-- for styling capture in a div -->
             <div class="input_fields">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}">
             </div>
 
             <!-- for styling capture in a div -->
@@ -41,33 +41,17 @@
                     {% endfor %}
                 </select>
             </div>
-            
-            
+
             <label for="preview">Message Preview</label>
             <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
-        
 
-        </form>
-        
-
-
-                    <!-- for styling capture in a div -->
-
-        <div class="button">
-            <form class="form" action="/" method="post">
+            <div class="button">
                 <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
                 <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}">
-                <input type="hidden" name="msg_template_id" value="{{ selected_template_id }}">
                 <input class="btn btn--action" type="submit" value="Send">
-            </form>
-        </div>
-        
+            </div>
 
-        </div>
+        </form>
+    </div>
 </body>
 </html>
-
-
-
-
-

@@ -12,21 +12,19 @@
     <!-- for styling, capturing everything in a div  -->
     <div class="all">
 
+        <!-- Template Selection Form -->
         <form class="form" action="/" method="post">
-
-            <!-- for styling capture in a div -->
+            <!-- Existing form fields -->
             <div class="input_fields">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}">
             </div>
 
-            <!-- for styling capture in a div -->
             <div class="input_fields">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}">
             </div>
 
-            <!-- for styling capture in a div -->
             <div class="input_fields">
                 <label for="msg_template_id">Template</label>
                 <select name="msg_template_id" id="msg_template_id" onchange="this.form.submit()">
@@ -43,12 +41,19 @@
             <label for="preview">Message Preview</label>
             <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
 
-            <div class="button">
-                <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
-                <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}">
-                <input class="btn btn--action" type="submit" value="Send">
-            </div>
+            <!-- Hidden input fields for selected template data -->
+            <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
+            <!-- <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}"> -->
+        </form>
 
+        <!-- Message Sending Form -->
+        <form class="button" action="/sent" method="post">
+            <input type="hidden" name="name" value="{{ request.form.get('name', '') }}">
+            <input type="hidden" name="email" value="{{ request.form.get('email', '') }}">
+            <input type="hidden" name="msg_template_id" value="{{ selected_template_id }}">
+            <!-- <input type="hidden" name="msg_template_content" value="{{ selected_template_msg_content }}"> -->
+            
+            <input class="btn btn--action" type="submit" value="Send">
         </form>
     </div>
 </body>

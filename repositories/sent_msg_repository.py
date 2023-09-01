@@ -7,7 +7,7 @@ from models.msg_sent import Msg_sent #importing the class of Msg_sent to be used
 # saving the recipient_name, recipient_email and msg_template_id back to the msg_sents table in the db 
 def save(msg_sent):
     sql = """
-        INSERT INTO msg_sent (recipient_name, recipient_email, msg_template_id) 
+        INSERT INTO msg_sents (recipient_name, recipient_email, msg_template_id) 
         VALUES (%s, %s, %s) 
         RETURNING *
     """
@@ -20,6 +20,12 @@ def save(msg_sent):
         ]
     
     results = run_sql(sql, values)
-    id = results[0]['id'] #this is telling it where to find the 'id' number once its been generated in the 'dictionary'  - see run_sql file for defintion of the the dctionary
-    msg_sent.id = id
-    return msg_sent
+    
+    if results:
+        # Check if results is not empty
+        id = results[0]['id']  # Assuming the 'id' is in the first row of results
+        msg_sent.id = id
+        return msg_sent
+    else:
+        # Handle the case where no results were returned
+        return None

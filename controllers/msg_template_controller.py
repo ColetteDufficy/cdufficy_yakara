@@ -8,7 +8,7 @@ import repositories.sent_msg_repository as sent_msg_repository
 import repositories.msg_template_repository as msg_template_repository
 
 
-messages_blueprint = Blueprint("messages", __name__)
+messages_blueprint = Blueprint("index", __name__)
 #blueprint is a place to store lots of routes. ie @app.routes
 
 
@@ -48,7 +48,7 @@ def get_all_msg_templates():
 
 # CREATE
 # POST 'msg_sent' back to db as persistent data
-@messages_blueprint.route("/", methods=['POST'])
+@messages_blueprint.route("/sent", methods=['POST'])
 def create_msg_sent_to_db():
     recipient_name = request.form['name']
     recipient_email = request.form['email']
@@ -61,8 +61,8 @@ def create_msg_sent_to_db():
 
     # print("msg_sent submiussion:", msg_sent)
 
-    # Redirect to a success page
-    return redirect('/')
+
+    return render_template('sent.html')
 
 
 
