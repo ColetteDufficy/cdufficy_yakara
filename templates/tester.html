@@ -8,6 +8,8 @@
   <title>Yakara</title>
 </head>
 
+
+
 <body>
     <!-- for styling, capturing everything in a div  -->
     <div class="all">
@@ -17,13 +19,13 @@
             <!-- for styling capture in a div -->
             <div class="input_fields">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}">
+                <input type="text" id="name" name="name">
             </div>
 
             <!-- for styling capture in a div -->
             <div class="input_fields">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}">
+                <input type="email" id="email" name="email">
             </div>
 
             <!-- for styling capture in a div -->
@@ -39,17 +41,33 @@
                     {% endfor %}
                 </select>
             </div>
-
+            
+            
             <label for="preview">Message Preview</label>
             <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
-
-            <div class="button">
-                <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
-                <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}">
-                <input class="btn btn--action" type="submit" value="Send">
-            </div>
+        
 
         </form>
-    </div>
+        
+
+
+                    <!-- for styling capture in a div -->
+
+        <div class="button">
+            <form class="form" action="/" method="post">
+                <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
+                <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}">
+                <input type="hidden" name="msg_template_id" value="{{ selected_template_id }}">
+                <input class="btn btn--action" type="submit" value="Send">
+            </form>
+        </div>
+        
+
+        </div>
 </body>
 </html>
+
+
+
+
+

@@ -48,22 +48,19 @@ def get_all_msg_templates():
 
 # CREATE
 # POST 'msg_sent' back to db as persistent data
-@messages_blueprint.route("/", methods=['POST'])
+@messages_blueprint.route("/",  methods=['POST'])
 def create_msg_sent_to_db():
+
     recipient_name = request.form['name']
     recipient_email = request.form['email']
     msg_template_id = request.form['msg_template_id']
-
+    
     msg_template = msg_template_repository.select(msg_template_id)
 
     msg_sent = Msg_sent(recipient_name, recipient_email, msg_template)
     sent_msg_repository.save(msg_sent)
 
-    # print("msg_sent submiussion:", msg_sent)
-
-    # Redirect to a success page
     return redirect('/')
-
 
 
 
