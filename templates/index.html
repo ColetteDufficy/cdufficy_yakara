@@ -28,13 +28,18 @@
             <div class="input_fields">
                 <label for="msg_template_id">Template</label>
                 <select name="msg_template_id" id="msg_template_id" onchange="this.form.submit()">
+                    <option value="" disabled selected>Choose a template</option>
                     {% for msg_template in msg_templates %}
+                        <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
+                    {% endfor %}
+
+                    <!-- {% for msg_template in msg_templates %}
                         {% if msg_template.msg_title == 'Choose a template' %}
                             <option value="{{ msg_template.id }}" selected>{{ msg_template.msg_title }}</option>
                         {% else %}
                             <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %} -->
                 </select>
             </div>
 
