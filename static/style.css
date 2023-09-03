@@ -106,9 +106,22 @@ textarea {
 
 
 
+/* CSS for custom dropdown arrow */
+/* Hide the default dropdown arrow */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='12' viewBox='0 0 12 12'%3E%3Cpolygon points='0,0 12,0 6,12' fill='black'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px; /* Adjust the padding to make space for the arrow image */
+}
 
-
-
+/* Style the custom arrow image */
+select::-ms-expand {
+    display: none; /* Hide the arrow in IE */
+}
 
 
 
