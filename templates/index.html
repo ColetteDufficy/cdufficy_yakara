@@ -1,62 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-  <title>Yakara</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Yakara</title>
 </head>
+
+
+
 <body>
     <!-- for styling, capturing everything in a div  -->
     <div class="all">
 
-        <!-- Template Selection Form -->
+        <!-- two forms were created to handle post methods x 2 -->
+
+        <!-- Template selection Form -->
         <form class="form" action="/" method="post">
-            <!-- Existing form fields -->
+            <!-- Name field -->
             <div class="input_fields">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}" >
             </div>
 
+            <!-- Email field -->
             <div class="input_fields">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}" >
             </div>
 
+            <!-- Drop down menu -->
             <div class="input_fields">
                 <label for="msg_template_id">Template</label>
                 <select name="msg_template_id" id="msg_template_id" onchange="this.form.submit()">
                     <option value="" disabled selected>Choose a template</option>
+
                     {% for msg_template in msg_templates %}
-                        <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
+                        <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %} selected {% endif %}>
+                            {{ msg_template.msg_title }}
+                        </option>
                     {% endfor %}
 
-                    <!-- {% for msg_template in msg_templates %}
-                        {% if msg_template.msg_title == 'Choose a template' %}
-                            <option value="{{ msg_template.id }}" selected>{{ msg_template.msg_title }}</option>
-                        {% else %}
-                            <option value="{{ msg_template.id }}" {% if selected_template_id == msg_template.id %}selected{% endif %}>{{ msg_template.msg_title }}</option>
-                        {% endif %}
-                    {% endfor %} -->
                 </select>
             </div>
 
+
+            <!-- Message Preview field -->
             <label for="preview">Message Preview</label>
             <textarea name="preview" id="preview" cols="70" rows="6" style="resize: none">{{ selected_template_msg_content }}</textarea>
 
-            <!-- Hidden input fields for selected template data -->
+            <!-- Hidden input fields for selected_template  -->
             <input type="hidden" name="selected_template_id" value="{{ selected_template_id }}">
-            <!-- <input type="hidden" name="selected_template_content" value="{{ selected_template_msg_content }}"> -->
         </form>
 
-        <!-- Message Sending Form -->
+
+
+        <!-- Message Sending Form to db -->
         <form class="button" action="/sent" method="post">
             <input type="hidden" name="name" value="{{ request.form.get('name', '') }}">
             <input type="hidden" name="email" value="{{ request.form.get('email', '') }}">
             <input type="hidden" name="msg_template_id" value="{{ selected_template_id }}">
-            <!-- <input type="hidden" name="msg_template_content" value="{{ selected_template_msg_content }}"> -->
             
             <input class="btn btn--action" type="submit" value="Send">
         </form>

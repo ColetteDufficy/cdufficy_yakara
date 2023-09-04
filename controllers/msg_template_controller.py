@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 from flask import Blueprint
 import re
 
@@ -23,7 +23,7 @@ messages_blueprint = Blueprint("index", __name__)
 # 7. DELETE
 
 # NEW
-# GET '/' requesting all the msg_title so they appear in drop down as options
+# GET '/' requesting all msg_title so they appear in drop down as options
 # POST '/' onchange event prompts POST response to fill preview screen with user-choosen msg_content
 @messages_blueprint.route("/", methods=['GET', 'POST'])
 def get_all_msg_templates():
@@ -33,7 +33,7 @@ def get_all_msg_templates():
     msg_templates = msg_template_repository.select_all()
 
     if request.method == 'POST':
-        # print("Form Data:", request.form)
+        # print("Request form data:", request.form)
         selected_template_id = int(request.form['msg_template_id'])
 
         if selected_template_id:

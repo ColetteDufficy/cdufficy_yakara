@@ -12,29 +12,33 @@ body {
     /* border: red solid 2px; */
 } 
 
+/* the form work space */
 .all {
     padding-left: 5em;
     padding-top: 2em;
     text-align: left;
+    /* border: red solid 2px; */
 }
 
+/* just the form */
 .form {
     display: inline-block;
     text-align: left;
-    /* border: blue solid 2px; show me the fir only */
+    /* border: blue solid 2px;  */
 }
 
- /* these are text labels only x 3 */
+
+ /* these are text labels only x 4 eg Name, Email etc */
 label {
     display: block; /* Display labels one below the other */
-    /* border: rgb(0, 255, 55) solid 2px; show me the edge of label titles */
+    /* border: rgb(0, 255, 55) solid 2px;  */
 }
 
 
  /* these are labels and input fields x 3 */
 .input_fields {
-    margin-bottom: 10px; /* Add spacing between inputs */
-    /* border: rgb(255, 0, 230) solid 2px; show me the edge of 3 input elements */
+    margin-bottom: 10px; /* spacing between input fields */
+    /* border: rgb(255, 0, 230) solid 2px;  */
 }
 
  /* these are input fields x 3 only */
@@ -45,8 +49,8 @@ select {
     font-size: 16px;
     width: 40%; 
     padding: 5px; 
-    margin-bottom: 10px; /* spacing between fields */
-    /* border: rgb(242, 255, 0) solid 2px; show me the edge of 3 input elements */
+    margin-bottom: 10px; /* spacing between input fields */
+    /* border: rgb(242, 255, 0) solid 2px; */
 }
 
 /* this s the preview window only */
@@ -56,24 +60,32 @@ textarea {
     width: 70%; 
     padding: 5px; 
     margin-bottom: 10px; 
-    /* border: rgb(0, 229, 255) solid 2px; show me the edge of 3 input elements */
+    /* border: rgb(0, 229, 255) solid 2px;  */
 }
 
-/* avoiding default button styling */
+/* SEND button - avoiding default button styling */
 .btn.btn--action {
     background-color: rgb(97, 158, 219); 
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: bold;
-    padding: 0px 20px 0px 20px; /* padding for spacing */
-    border: rgb(51, 86, 121) 1px solid; /* replace default button border */
+    padding: 0px 20px 0px 20px; /* button is wider than normal */
+    border: rgb(51, 86, 121) 1px solid; /* replace default button border colour */
     cursor: pointer; /* cursor on hover for fun! */
 }
 
+
+
+/* ====================********====================********=====================*******============= */
+/* sent.html page styling */
+/* ====================********====================********=====================*******============= */
+
+/* sent confirmation box */
 .sent_alert {
     background-color: rgb(34, 181, 191); 
-    padding: 20px; 
-    text-align: center; /* Center-align the content */
+    padding-left: 40px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: rgb(255, 255, 255); 
     border-radius: 5px;
     margin-left: 5em;
@@ -82,7 +94,7 @@ textarea {
 }
 
 .nav_bar li {
-    text-align: center;
+    margin-left: 5em;
     list-style-type: none;
 }
 
@@ -93,10 +105,16 @@ textarea {
 }
 
 
+/* ====================********====================********=====================*******============= */
+/* error.html page styling */
+/* ====================********====================********=====================*******============= */
+
+/* error box */
 .error_alert {
     background-color: rgb(117, 8, 19); 
-    padding: 20px; 
-    text-align: center; /* Center-align the content */
+    padding-left: 40px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: rgb(255, 255, 255); 
     border-radius: 5px;
     margin-left: 5em;
@@ -105,9 +123,10 @@ textarea {
 }
 
 
+/* ====================********====================********=====================*******============= */
+/* custom dropdown arrow */
+/* ====================********====================********=====================*******============= */
 
-/* CSS for custom dropdown arrow */
-/* Hide the default dropdown arrow */
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
